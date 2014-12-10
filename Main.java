@@ -5,13 +5,14 @@ public class Main {
 		int superzahl = 26;
 		
 		GameState test = new GameState(spielfeld, superzahl);	
+
 		Spielfeld sp = new Spielfeld(test);
 		
 		System.out.println(sp.toString());	
 		sp.shiftRow(3, true);	
 		System.out.println(sp.toString());
 		
-		
+
 		
 	}
 }
