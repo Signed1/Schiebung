@@ -1,7 +1,6 @@
+package Schiebung;
 import java.lang.System;
 import java.util.Arrays;
-
-package Schiebung;
 
 public class GameState {
 	private int[][] field; //An array of rows
