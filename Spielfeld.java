@@ -1,10 +1,11 @@
-
+package Schiebung;
 public class Spielfeld {
 	private GameState gameState;
+	
 	public Spielfeld(GameState sp){
 		gameState = sp;
 	}
-
+	
 	//TODO: Use arraycopy as a faster way to shift the array if performance gets a problem
 	public int shiftRow(int rowNr, boolean direction){
 		//direction false = left, direction true = right
@@ -51,5 +52,8 @@ public class Spielfeld {
 
 		gameState.setOpNr(opNr); //Set new OpNr
 		return opNr;
+	}
+	public String toString(){
+		return this.gameState.toString();
 	}
 }

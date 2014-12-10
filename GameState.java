@@ -1,4 +1,4 @@
-
+package Schiebung;
 public class GameState {
 	private int[][] field; //An array of rows
 	private int opNr;
