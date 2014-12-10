@@ -1,3 +1,5 @@
+import java.lang.System;
+import java.util.Arrays;
 
 public class GameState {
 	private int[][] field; //An array of rows
@@ -50,5 +52,35 @@ public class GameState {
 		}
 		rep = rep + "\n " + this.opNr;
 		return rep;
+	}
+	public int rate(){
+		//Build a single array, holding all numbers in order
+		int[] singleArray = new int[this.getWidth() * this.getHeight()];
+		int counter = 0;
+		for(int i = 0; i<this.getHeight(); i++){
+			for(int j = 0; j<this.getWidth(); j++){
+				singleArray[counter] = this.getCell(i, j);
+				counter++;
+			}
+		}
+
+		//Rate it with bubble sort;
+		boolean swapped = true;
+		int rating = 0;
+
+		while(swapped == true){
+			swapped = false;
+			for(int i = singleArray.length-1; i>0; i--){;
+				if(singleArray[i] < singleArray[i-1]) {
+					int tmp = singleArray[i];
+					singleArray[i] = singleArray[i - 1];
+					singleArray[i - 1] = tmp;
+					rating++;
+					swapped = true;
+				}
+			}
+		}
+
+		return rating;
 	}
 }
