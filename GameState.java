@@ -38,4 +38,17 @@ public class GameState {
 		}
 		return 0;
 	}
+	public String toString(){
+		String rep = "";
+		
+		for(int i = 0; i < this.getHeight(); i++){
+			for(int j = 0; j < this.getWidth(); j++){
+				if(this.field[i][j] <= 9) rep = rep + " ";
+				rep = rep + " " + this.field[i][j];
+			}
+			rep = rep + "\n";
+		}
+		rep = rep + "\n " + this.opNr;
+		return rep;
+	}
 }

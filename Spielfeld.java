@@ -10,7 +10,7 @@ public class Spielfeld {
 		//direction false = left, direction true = right
 		int opNr;
 
-		if(direction == false) {
+		if(direction == false){
 			opNr = gameState.getCell(rowNr, gameState.getWidth() - 1); //Save the future opNr
 			for (int i = 0; i < gameState.getWidth()-1; i++) {
 				gameState.setCell(rowNr, i, gameState.getCell(i+1, rowNr)); //Shift all cells one cell to the right
