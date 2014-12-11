@@ -92,7 +92,7 @@ public class GameState  implements Comparable<GameState>{
 		}
 		return singleArray;
 	}
-	public int rate(){
+	/*public int rate(){
 		int[] singleArray = this.toSingleArray();
 
 		//Rate it with bubble sort;
@@ -112,18 +112,19 @@ public class GameState  implements Comparable<GameState>{
 			}
 		}
 
-		return rating;
+		return  rating;
 	}
-	
-	/*public int rate(){
+	*/
+	public int rate(){
 		int[] singleArray = this.toSingleArray();
 		int errors = 0;
 		for(int i = 0; i < singleArray.length; i ++){
 			if(singleArray[i] != i+1) errors ++;
 		}
-		return errors;
+		return (int) Math.ceil(errors/this.getHeight());
 	}
-	*/
+	
+	
 	public static int[][] cloneArray(int[][] src) {
 	    int length = src.length;
 	    int[][] target = new int[length][src[0].length];

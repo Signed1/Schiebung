@@ -35,11 +35,18 @@ public class Main {
 		
 
 	}
+	public static boolean valid(GameState nodeToCheck){
+		int[] serial = nodeToCheck.toSingleArray();
+		for(int i = 0; i < serial.length-1; i++){
+			if(serial[i]>serial[i+1]) return false;
+		}
+		return true;
+	}
 
 	public static ArrayList<GameState> checkNode(GameState nodeToCheck, ArrayList<GameState> open, HashMap<String, GameState> closed) {
-		if(nodeToCheck.getaStarH() == 0){
+		if(valid(nodeToCheck)){
 			System.out.println("Found shortest way");
-			System.out.println(nodeToCheck.getaStarG());
+			System.out.println("Die Weglänge ist: "+nodeToCheck.getaStarG());
 			System.out.println(nodeToCheck.toString());
 			System.exit(0);
 		}
