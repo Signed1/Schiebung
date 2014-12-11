@@ -115,6 +115,15 @@ public class GameState  implements Comparable<GameState>{
 		return rating;
 	}
 	
+	/*public int rate(){
+		int[] singleArray = this.toSingleArray();
+		int errors = 0;
+		for(int i = 0; i < singleArray.length; i ++){
+			if(singleArray[i] != i+1) errors ++;
+		}
+		return errors;
+	}
+	*/
 	public static int[][] cloneArray(int[][] src) {
 	    int length = src.length;
 	    int[][] target = new int[length][src[0].length];
