@@ -16,6 +16,7 @@ public class GameState  implements Comparable<GameState>{
 	public GameState(int[][] s, int t, int aStarG, GameState predecessor){
 		this.field = s;
 		this.opNr = t;
+		this.hash = Arrays.toString(this.toSingleArray());
 
 		this.aStarH = this.rate(); //Precalculate values for A* to improve performance
 		this.aStarG = aStarG+1; //Number of steps to get to this node
@@ -167,9 +168,6 @@ public class GameState  implements Comparable<GameState>{
 	}
 
 	public String hash(){
-		if(this.hash.equals("")){
-			this.hash = Arrays.toString(this.toSingleArray());
-		}
 		return this.hash;
 	}
 

@@ -19,6 +19,7 @@ public class Main {
 		ArrayList<GameState> open = new ArrayList<GameState>();
 		HashMap<String, GameState> closed = new HashMap<String, GameState>();
 
+		/*
 		open.add(test);
 		while(open.size() > 0) {
 			int lowest = 0;
@@ -31,7 +32,13 @@ public class Main {
 			closed.put(open.get(lowest).hash(), open.get(lowest));
 			open.remove(lowest);
 		}
+		*/
+		System.out.println(test.shiftRow(1, true));
+		System.out.println(test);
+		test.shiftRow(1, true);
+		System.out.println(test);
 
+		System.out.println(test);
 	}
 
 	public static ArrayList<GameState> checkNode(GameState nodeToCheck, ArrayList<GameState> open, HashMap<String, GameState> closed) {
@@ -54,6 +61,10 @@ public class Main {
 	}
 
 	public static int expand(GameState s, ArrayList<GameState> open, HashMap<String, GameState> closed){
+		System.out.println("Open list size: " + open.size());
+		System.out.println("Closed list size: " + closed.size());
+		System.out.println(s.toString());
+
 		for(int i = 0; i<s.getWidth(); i++){
 			GameState newGameState = s.shiftColumn(i, true);
 			open = checkNode(newGameState, open, closed);
