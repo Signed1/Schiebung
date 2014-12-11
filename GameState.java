@@ -1,9 +1,8 @@
 package Schiebung;
-
 import java.lang.System;
 import java.util.Arrays;
-
 public class GameState  implements Comparable<GameState>{
+
 	private int[][] field; //An array of rows
 	private int opNr;
 	private String hash;
