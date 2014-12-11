@@ -3,15 +3,15 @@ package Schiebung;
 import java.lang.System;
 import java.util.Arrays;
 
-public class GameState  implements Comparable{
+public class GameState  implements Comparable<GameState>{
 	private int[][] field; //An array of rows
 	private int opNr;
 	private String hash;
 
 	private int aStarH;
 	private int aStarG;
+	private int aStarF;
 
-	private int aStarF = aStarG + aStarH;
 	private GameState predecessor;
 
 	public GameState(int[][] s, int t, int aStarG, GameState predecessor){
@@ -20,6 +20,7 @@ public class GameState  implements Comparable{
 
 		this.aStarH = this.rate(); //Precalculate values for A* to improve performance
 		this.aStarG = aStarG+1; //Number of steps to get to this node
+		this.aStarF = this.aStarG + this.aStarH; //Estimated complete cost using this node
 		this.predecessor = predecessor;
 	}
 
@@ -173,7 +174,7 @@ public class GameState  implements Comparable{
 		return this.hash;
 	}
 
-	int compareTo(GameState o){
+	public int compareTo(GameState o){
 		if(this.hash().equals(o.hash())) return 0;
 		return this.aStarF - o.aStarF;
 	}
