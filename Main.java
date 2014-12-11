@@ -12,9 +12,12 @@ public class Main {
 
 		Spielfeld sp = new Spielfeld(test);
 		
-		System.out.println(test.toString());
-
-		System.out.println(test.rate());
+		System.out.println(test.shiftRow(1, true));
+		System.out.println(test);
+		System.out.println(test.shiftRow(1, false));
+		System.out.println(test);
+	;
+		
 
 		ArrayList<GameState> open = new ArrayList<GameState>();
 		HashMap<String, GameState> closed = new HashMap<String, GameState>();
@@ -33,12 +36,7 @@ public class Main {
 			open.remove(lowest);
 		}
 		*/
-		System.out.println(test.shiftRow(1, true));
-		System.out.println(test);
-		test.shiftRow(1, true);
-		System.out.println(test);
 
-		System.out.println(test);
 	}
 
 	public static ArrayList<GameState> checkNode(GameState nodeToCheck, ArrayList<GameState> open, HashMap<String, GameState> closed) {

@@ -114,12 +114,21 @@ public class GameState  implements Comparable<GameState>{
 
 		return rating;
 	}
+	
+	public static int[][] cloneArray(int[][] src) {
+	    int length = src.length;
+	    int[][] target = new int[length][src[0].length];
+	    for (int i = 0; i < length; i++) {
+	        System.arraycopy(src[i], 0, target[i], 0, src[i].length);
+	    }
+	    return target;
+	}
 
 	public GameState shiftRow(int rowNr, boolean direction){
 		//direction false = left, direction true = right
 		int opNr;
-
-		GameState createdState = new GameState(this.field, this.opNr, this.aStarG, this);
+		
+		GameState createdState = new GameState(cloneArray(field), this.opNr, this.aStarG, this);
 
 		if(direction == false){
 			opNr = createdState.getCell(rowNr, 0); //Save the future opNr
@@ -145,7 +154,7 @@ public class GameState  implements Comparable<GameState>{
 		//direction false = upwards, true = downwards
 		int opNr;
 
-		GameState createdState = new GameState(this.field, this.opNr, this.aStarG, this);
+		GameState createdState = new GameState(cloneArray(field), this.opNr, this.aStarG, this);
 
 		if(direction == false){
 			opNr = createdState.getCell(0, columnNr); //Save the topmost cell as future opNr
