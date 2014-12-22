@@ -6,8 +6,8 @@ import java.util.HashMap;
 public class Main {
 	public static void main(String[] args){
 		//int[][] spielfeld = {{1,7,8,9,10},{2,6,4,11,13},{15,5,3,12,14},{16,18,19,20,21},{17,22,23,24,25}};
-		int[][] spielfeld = {{9,8,7},{6,5,4},{3,2,1}};
-		//int[][] 
+		//int[][] spielfeld = {{5,2,3},{9,7,1},{4,8,6}};
+		int[][] spielfeld = {{2,3,7,11},{9,1,5,12},{4,8,6,13},{14,15,16,17}};
 		int superzahl = 10;
 		
 		GameState test = new GameState(spielfeld, superzahl, 0, null);	
@@ -19,7 +19,7 @@ public class Main {
 		ArrayList<GameState> open = new ArrayList<GameState>();
 		HashMap<String, GameState> closed = new HashMap<String, GameState>();
 
-		
+
 		open.add(test);
 		while(open.size() > 0) {
 			int lowest = 0;
@@ -46,7 +46,7 @@ public class Main {
 	public static ArrayList<GameState> checkNode(GameState nodeToCheck, ArrayList<GameState> open, HashMap<String, GameState> closed) {
 		if(valid(nodeToCheck)){
 			System.out.println("Found shortest way");
-			System.out.println("Die Wegl‰nge ist: "+nodeToCheck.getaStarG());
+			System.out.println("Die Wegl√§nge ist: "+nodeToCheck.getaStarG());
 			System.out.println(nodeToCheck.toString());
 			System.exit(0);
 		}
@@ -65,9 +65,14 @@ public class Main {
 	}
 
 	public static int expand(GameState s, ArrayList<GameState> open, HashMap<String, GameState> closed){
+
+		//System.out.println("-----------------------------");
 		System.out.println("Open list size: " + open.size());
 		System.out.println("Closed list size: " + closed.size());
-		System.out.println(s.toString());
+		System.out.println("Current depth is: " + s.getaStarG());
+		///System.out.println("My estimated reminder: " + s.getaStarH());
+
+		//System.out.println(s.toString());
 
 		for(int i = 0; i<s.getWidth(); i++){
 			GameState newGameState = s.shiftColumn(i, true);
@@ -81,6 +86,7 @@ public class Main {
 			GameState newGameState = s.shiftRow(j, true);
 			open = checkNode(newGameState, open, closed);
 
+			
 			GameState newGameState2 = s.shiftRow(j, false);
 			open = checkNode(newGameState2, open, closed);
 		}
