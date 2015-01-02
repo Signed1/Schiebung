@@ -15,8 +15,12 @@ public class Main {
 		int superzahl = 10;
 		CSVReader reader = null;
 
+		if(args.length != 1){
+			System.out.println("First arg has to be a filename to read");
+		}
+
 		try {
-			reader = new CSVReader(new FileReader("Schiebung/input.csv"), ';');
+			reader = new CSVReader(new FileReader(args[0]), ';');
 		}
 		catch (IOException e){
 			System.out.println(e.toString());
@@ -47,8 +51,7 @@ public class Main {
 		GameState test = new GameState(spielfeld, superzahl, 0, null);
 
 		System.out.println(test);
-		System.exit(0);
-
+		
 		ArrayList<GameState> open = new ArrayList<GameState>();
 		HashMap<String, GameState> closed = new HashMap<String, GameState>();
 
