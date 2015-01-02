@@ -1,20 +1,53 @@
 package Schiebung;
 
+import java.io.IOException;
+import java.lang.Integer;
+import java.lang.System;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.FileReader;
 
 public class Main {
-	public static void main(String[] args){
+	public static void main(String[] args) throws IOException{
 		//int[][] spielfeld = {{1,7,8,9,10},{2,6,4,11,13},{15,5,3,12,14},{16,18,19,20,21},{17,22,23,24,25}};
 		//int[][] spielfeld = {{5,2,3},{9,7,1},{4,8,6}};
-		int[][] spielfeld = {{2,3,7,11},{9,1,5,12},{4,8,6,13},{14,15,16,17}};
+		int[][] spielfeld; //= {{2,3,7,11},{9,1,5,12},{4,8,6,13},{14,15,16,17}};
 		int superzahl = 10;
-		
-		GameState test = new GameState(spielfeld, superzahl, 0, null);	
+		CSVReader reader = null;
 
-		Spielfeld sp = new Spielfeld(test);
-		
-		
+		try {
+			reader = new CSVReader(new FileReader("Schiebung/input.csv"), ';');
+		}
+		catch (IOException e){
+			System.out.println(e.toString());
+		}
+
+		String [] nextLine;
+		ArrayList<int[]> parsedList = new ArrayList<int[]>();
+
+		while ((nextLine = reader.readNext()) != null) {
+			if(!nextLine[1].equals("Freies Teil")) {
+				int[] intLine = new int[nextLine.length];
+				for(int i = 0; i<nextLine.length; i++) {
+					intLine[i] = Integer.parseInt(nextLine[i]);
+				}
+
+				parsedList.add(intLine);
+			}
+			else{
+				superzahl = Integer.parseInt(nextLine[0]);
+			}
+		}
+
+		spielfeld = new int[parsedList.size()][parsedList.get(0).length];
+		for(int i = 0; i<parsedList.size(); i++){
+			spielfeld[i] = parsedList.get(i);
+		}
+
+		GameState test = new GameState(spielfeld, superzahl, 0, null);
+
+		System.out.println(test);
+		System.exit(0);
 
 		ArrayList<GameState> open = new ArrayList<GameState>();
 		HashMap<String, GameState> closed = new HashMap<String, GameState>();
