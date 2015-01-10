@@ -92,7 +92,8 @@ public class GameState  implements Comparable<GameState>{
 		}
 		return singleArray;
 	}
-	/*public int rate(){
+	
+	public int rate(){
 		int[] singleArray = this.toSingleArray();
 
 		//Rate it with bubble sort;
@@ -114,16 +115,101 @@ public class GameState  implements Comparable<GameState>{
 
 		return  rating;
 	}
+
+	/*
+	public int rate(){
+		int errors = 0;
+		for(int i = 0; i < this.getHeight(); i++){
+			for(int j = 1; j < this.getWidth(); j++){
+				if(this.getCell(i,j)<this.getCell(i,j-1)){
+					errors = errors + 1;
+				}
+			}
+		}
+		return errors;
+	}
 	*/
+	/*
+	public int rate(){
+		//Manhattan rating
+		//FIXME: Does not terminate, worse than anything else
+		int errors = 0;
+
+		for(int i = 0; i < this.getHeight(); i++){
+			for(int j = 0; j< this.getWidth(); j++){
+				int number = this.getCell(i, j);
+				int targetRow = (int) Math.floor(number / this.getWidth());
+				int targetColumn = number % this.getWidth();
+
+				int distanceColumn = Math.abs(i-targetRow);
+				int distanceRow = Math.abs(j-targetColumn);
+
+				if(distanceRow == 0 && distanceColumn != 0){
+					distanceColumn = distanceColumn-1;
+				}
+				errors = errors + (distanceColumn * distanceRow);
+			}
+		}
+		return errors;
+	}
+	*/
+
+	/*
 	public int rate(){
 		int[] singleArray = this.toSingleArray();
 		int errors = 0;
 		for(int i = 0; i < singleArray.length; i ++){
-			if(singleArray[i] != i+1) errors ++;
+			if(singleArray[i] != i+1) errors = errors + Math.abs((i+1-singleArray[i])*i/5);
 		}
 		return (int) Math.ceil(errors/this.getHeight());
 	}
-	
+	*/
+	/*
+	public int rate(){
+		//Intellirate
+		int[] singleArray = this.toSingleArray();
+		int errors = 9999;
+
+		//Distance is eighter
+		// 1) The number of shifts inside the array to get the number right
+		// 2) The number of shifts using the border and re-shifing inside again
+
+		for(int superzahl = 1; superzahl<this.toSingleArray().length; superzahl++) {
+			int cell_errors = 0;
+			for (int i = 0; i < this.getHeight(); i++) {
+				for (int j = 0; j < this.getWidth(); j++) {
+					int number = this.getCell(i, j);
+
+					if (number != superzahl) { //Add no errors if the current number is the superzahl
+						int targetRow = (int) Math.floor(number / this.getWidth());
+						int targetColumn;
+						if (number < superzahl) {
+							targetColumn = number % this.getWidth();
+						} else {
+							targetColumn = (number % this.getWidth()) - 1;
+						}
+
+						int distanceColumn = Math.abs(i - targetRow);
+						int distanceRow = Math.abs(j - targetColumn);
+
+						if (distanceRow == 0 && distanceColumn != 0) {
+							distanceColumn = distanceColumn - 1;
+						}
+						int manhattanDistance = distanceColumn + distanceRow;
+						int borderDistance = Math.min(Math.min((this.getHeight() - 1) - i, i), Math.min((this.getWidth() - 1) - j, j)) + 2 + Math.min(targetRow, targetColumn);
+						cell_errors = cell_errors + Math.min(manhattanDistance, borderDistance);
+					}
+				}
+			}
+
+			if (errors > cell_errors) {
+				errors = cell_errors; //Take the superzahl with the lowest error rate
+			}
+		}
+		return errors;
+	}
+	*/
+
 	
 	public static int[][] cloneArray(int[][] src) {
 	    int length = src.length;
