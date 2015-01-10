@@ -6,8 +6,8 @@ import java.util.HashMap;
 public class Main {
 	public static void main(String[] args){
 		//int[][] spielfeld = {{1,7,8,9,10},{2,6,4,11,13},{15,5,3,12,14},{16,18,19,20,21},{17,22,23,24,25}};
-		int[][] spielfeld = {{9,8,7},{6,5,4},{3,2,1}};
-		//int[][] 
+		int[][] spielfeld = {{4,1,3},{9,7,5},{2,8,6}};
+		//int[][] spielfeld = {{1,4},{5,3}};
 		int superzahl = 10;
 		
 		GameState test = new GameState(spielfeld, superzahl, 0, null);	
