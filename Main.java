@@ -51,7 +51,7 @@ public class Main {
 		GameState test = new GameState(spielfeld, superzahl, 0, null);
 
 		System.out.println(test);
-		
+
 		ArrayList<GameState> open = new ArrayList<GameState>();
 		HashMap<String, GameState> closed = new HashMap<String, GameState>();
 
@@ -82,7 +82,7 @@ public class Main {
 	public static ArrayList<GameState> checkNode(GameState nodeToCheck, ArrayList<GameState> open, HashMap<String, GameState> closed) {
 		if(valid(nodeToCheck)){
 			System.out.println("Found shortest way");
-			System.out.println("Die Weglänge ist: "+nodeToCheck.getaStarG());
+			System.out.println("Die Weglänge ist: "+(nodeToCheck.getaStarG()-1));
 			System.out.println(nodeToCheck.toString());
 			System.exit(0);
 		}
@@ -103,9 +103,9 @@ public class Main {
 	public static int expand(GameState s, ArrayList<GameState> open, HashMap<String, GameState> closed){
 
 		//System.out.println("-----------------------------");
-		System.out.println("Open list size: " + open.size());
-		System.out.println("Closed list size: " + closed.size());
-		System.out.println("Current depth is: " + s.getaStarG());
+		//System.out.println("Open list size: " + open.size());
+		//System.out.println("Closed list size: " + closed.size());
+		//System.out.println("Current depth is: " + s.getaStarG());
 		///System.out.println("My estimated reminder: " + s.getaStarH());
 
 		//System.out.println(s.toString());
