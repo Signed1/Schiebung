@@ -44,6 +44,7 @@ public class Astar {
 				System.out.println(nodeToCheck.toString()+"\n\n");
 				nodeToCheck = nodeToCheck.getPredecessor();
 			}
+			System.out.println(nodeToCheck.toString()+"\n\n");
 			System.exit(0);
 		}
 
@@ -60,15 +61,7 @@ public class Astar {
 	}
 	
 	public void expand(GameState s){
-		/*
-		System.out.println("-----------------------------");
-		System.out.println("Open list size: " + open.size());
-		System.out.println("Closed list size: " + closed.size());
-		System.out.println("Current depth is: " + s.getaStarG());
-		System.out.println("My estimated reminder: " + s.getaStarH());
-		System.out.println(s.toString());
-		*/
-
+	
 		for(int i = 0; i<s.getWidth(); i++){
 			GameState newGameState = s.shiftColumn(i, true);
 			checkNode(newGameState);
