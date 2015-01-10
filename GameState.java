@@ -92,7 +92,7 @@ public class GameState  implements Comparable<GameState>{
 		}
 		return singleArray;
 	}
-	/*
+
 	public int rate(){
 		int[] singleArray = this.toSingleArray();
 
@@ -115,8 +115,8 @@ public class GameState  implements Comparable<GameState>{
 
 		return  rating;
 	}
-	*/
 
+	/*
 	public int rate(){
 		//Simple error count
 		int errors = 0;
@@ -127,9 +127,10 @@ public class GameState  implements Comparable<GameState>{
 				}
 			}
 		}
+		System.out.println("Error = " + errors);
 		return (int) Math.ceil(errors/this.getHeight());
 	}
-
+	*/
 	/*
 	public int rate(){
 		//Manhattan rating
@@ -154,18 +155,17 @@ public class GameState  implements Comparable<GameState>{
 		return errors;
 	}
 	*/
-
 	/*
 	public int rate(){
-		//Simple Rating
+		//Simple Rating 2
 		int[] singleArray = this.toSingleArray();
 		int errors = 0;
 		for(int i = 0; i < singleArray.length; i ++){
-			if(singleArray[i] != i+1) errors = errors + Math.abs((i+1-singleArray[i])*i/5);
+			if(singleArray[i] != i+1) errors = errors + 1;
+			 //Math.abs((i+1-singleArray[i])*i);
 		}
 		return (int) Math.ceil(errors/this.getHeight());
 	}
-	*/
 
 	/*
 	public int rate(){
@@ -212,7 +212,6 @@ public class GameState  implements Comparable<GameState>{
 		return errors;
 	}
 	*/
-
 	
 	public static int[][] cloneArray(int[][] src) {
 	    int length = src.length;

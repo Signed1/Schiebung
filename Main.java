@@ -60,7 +60,7 @@ public class Main {
 		while(open.size() > 0) {
 			int lowest = 0;
 			for (int i = 1; i < open.size(); i++) {
-				if (open.get(i).rate() < open.get(lowest).rate()) {
+				if (open.get(i).getaStarH() < open.get(lowest).getaStarH()) {
 					lowest = i;
 				}
 			}
@@ -102,13 +102,15 @@ public class Main {
 
 	public static int expand(GameState s, ArrayList<GameState> open, HashMap<String, GameState> closed){
 
-		//System.out.println("-----------------------------");
-		//System.out.println("Open list size: " + open.size());
-		//System.out.println("Closed list size: " + closed.size());
-		//System.out.println("Current depth is: " + s.getaStarG());
-		///System.out.println("My estimated reminder: " + s.getaStarH());
+		/*
+		System.out.println("-----------------------------");
+		System.out.println("Open list size: " + open.size());
+		System.out.println("Closed list size: " + closed.size());
+		System.out.println("Current depth is: " + s.getaStarG());
+		System.out.println("My estimated reminder: " + s.getaStarH());
 
-		//System.out.println(s.toString());
+		System.out.println(s.toString());
+		*/
 
 		for(int i = 0; i<s.getWidth(); i++){
 			GameState newGameState = s.shiftColumn(i, true);
