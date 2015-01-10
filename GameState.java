@@ -92,7 +92,7 @@ public class GameState  implements Comparable<GameState>{
 		}
 		return singleArray;
 	}
-	
+
 	public int rate(){
 		int[] singleArray = this.toSingleArray();
 
@@ -115,9 +115,9 @@ public class GameState  implements Comparable<GameState>{
 
 		return  rating;
 	}
-
-	/*
+/*
 	public int rate(){
+		//Simple error count
 		int errors = 0;
 		for(int i = 0; i < this.getHeight(); i++){
 			for(int j = 1; j < this.getWidth(); j++){
@@ -126,9 +126,9 @@ public class GameState  implements Comparable<GameState>{
 				}
 			}
 		}
-		return errors;
+		return (int) Math.ceil(errors/this.getHeight());
 	}
-	*/
+*/
 	/*
 	public int rate(){
 		//Manhattan rating
@@ -156,6 +156,7 @@ public class GameState  implements Comparable<GameState>{
 
 	/*
 	public int rate(){
+		//Simple Rating
 		int[] singleArray = this.toSingleArray();
 		int errors = 0;
 		for(int i = 0; i < singleArray.length; i ++){
@@ -164,6 +165,7 @@ public class GameState  implements Comparable<GameState>{
 		return (int) Math.ceil(errors/this.getHeight());
 	}
 	*/
+
 	/*
 	public int rate(){
 		//Intellirate
